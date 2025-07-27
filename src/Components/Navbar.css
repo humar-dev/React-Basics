@@ -1,0 +1,16 @@
+body{
+    background-color: darkcyan;
+}
+
+
+div.navb, ul.nav-component{
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    background-color: darkgray;
+}
+
+li{
+    list-style: none;
+}
