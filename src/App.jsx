@@ -2,6 +2,9 @@
 // import Footer from "./Components/Footer"
 // import Navbar from "./Components/Navbar"
 
+import { useRef , useState , useEffect } from "react";
+
+
 // function App(){  
 // return(
 // <>
@@ -71,49 +74,92 @@
     
 
   
-import { useEffect, useState } from "react"
-import Footer from "./Components/Footer"
-import Navbar from "./Components/Navbar"
+// import { useEffect, useState } from "react"
+// import Footer from "./Components/Footer"
+// import Navbar from "./Components/Navbar"
 
-//useEffect Hooks works when our component Mount/load  on the browser
+// //useEffect Hooks works when our component Mount/load  on the browser
 
-function App(){  
+// function App(){  
 
+//  let [count , setCount] = useState(0)
+
+
+//   function addCounter(){
+//       count = count +1;
+//       setCount(count);
+//   }
+
+//  // Run on Every rnder
+
+//    useEffect(()=>{
+//     alert("I will run on every Render")
+//   })
+
+
+//  // I will Run on first Render Only
+//   useEffect(()=>{
+//     alert("I am using UseEffect")
+//   }, [])
+
+//   // I will render on a certain value
+
+//   useEffect(()=>{
+//     alert("Count value has changed now")
+//   },[count])
+
+// return(
+// <>
+//      <h1>React Counter</h1>
+//     <p>Count value is:  {count}</p>
+//      <button onClick={addCounter}>AddCount</button>
+
+// </>
+
+// )
+// }
+
+// export default App
+
+
+
+//<--------------------useRef and useCallBack Hook in React -------------------->
+
+
+
+
+function App(){
+
+  
  let [count , setCount] = useState(0)
 
+ // let a=0 ; // This one is normal variable and everytime when our component render's it reset it's vaue to 0 , that's teh issue that we are using use ref , and across re-renders it helps to persist the value of a 
+ 
+ 
+  let a = useRef(0)
+  let ref = useRef()
+
+  // ref.current.backgroundColor="red"  React doesn't attach the ref to the DOM until after the component has rendered. So trying to access .current outside of useEffect will cause an error like:  
 
   function addCounter(){
       count = count +1;
       setCount(count);
   }
 
- // Run on Every rnder
-
-   useEffect(()=>{
-    alert("I will run on every Render")
+    useEffect(()=>{
+      a.current = a.current +1 ;
+      ref.current.style.backgroundColor="red"
+    console.log(`Rerendering and teh value of a is ${a.current}.........`)
   })
 
-
- // I will Run on first Render Only
-  useEffect(()=>{
-    alert("I am using UseEffect")
-  }, [])
-
-  // I will render on a certain value
-
-  useEffect(()=>{
-    alert("Count value has changed now")
-  },[count])
-
-return(
-<>
+ return(
+  <>
      <h1>React Counter</h1>
-    <p>Count value is:  {count}</p>
-     <button onClick={addCounter}>AddCount</button>
+//     <p>Count value is:  {count}</p>
+//      <button  ref={ref}   onClick={addCounter}>AddCount</button>
+  </>
 
-</>
-
-)
+ )
 }
 
 export default App
