@@ -23,34 +23,34 @@
 
 // learn react hooks , before react hooks we used class component for state or lifecycle
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function App() {
+// function App() {
   
-  let counter = 15;
-  let [count , setCounter ] = useState(15)
+//   let counter = 15;
+//   let [count , setCounter ] = useState(15)
 
-  const addCounter = ()=>{    //  +> in these functions , there is no rerendering , No UI change , in contrast react hook's give's React a memory to remember udated value's in re-redering process
-       counter = counter+1 ;
-       console.log(counter) 
-      setCounter(count+1)
-  }
-  // console.log(counter) , =>this one line printing 15 twice why ??  the reason is strict mode in the main.jsx file , it reloads your app for safety check 
+//   const addCounter = ()=>{    //  +> in these functions , there is no rerendering , No UI change , in contrast react hook's give's React a memory to remember udated value's in re-redering process
+//        counter = counter+1 ;
+//        console.log(counter) 
+//       setCounter(count+1)
+//   }
+//   // console.log(counter) , =>this one line printing 15 twice why ??  the reason is strict mode in the main.jsx file , it reloads your app for safety check 
 
-  /// <----------UseState Hook ------------>
+//   /// <----------UseState Hook ------------>
 
-  return (
-    <>
+//   return (
+//     <>
   
-    <Login array = {[1,2,3]}/>
-    <h1>Hello,that's my first React project</h1>
-    <button onClick={addCounter}> Add value </button>
-    <p>Counter Value: {counter}</p>
-    </>
-    )
-  }
+//     <Login array = {[1,2,3]}/>
+//     <h1>Hello,that's my first React project</h1>
+//     <button onClick={addCounter}> Add value </button>
+//     <p>Counter Value: {counter}</p>
+//     </>
+//     )
+//   }
   
-  export default App
+//   export default App
   
   
   
@@ -69,3 +69,51 @@ function App() {
     
     
     
+
+  
+import { useEffect, useState } from "react"
+import Footer from "./Components/Footer"
+import Navbar from "./Components/Navbar"
+
+//useEffect Hooks works when our component Mount/load  on the browser
+
+function App(){  
+
+ let [count , setCount] = useState(0)
+
+
+  function addCounter(){
+      count = count +1;
+      setCount(count);
+  }
+
+ // Run on Every rnder
+
+   useEffect(()=>{
+    alert("I will run on every Render")
+  })
+
+
+ // I will Run on first Render Only
+  useEffect(()=>{
+    alert("I am using UseEffect")
+  }, [])
+
+  // I will render on a certain value
+
+  useEffect(()=>{
+    alert("Count value has changed now")
+  },[count])
+
+return(
+<>
+     <h1>React Counter</h1>
+    <p>Count value is:  {count}</p>
+     <button onClick={addCounter}>AddCount</button>
+
+</>
+
+)
+}
+
+export default App
