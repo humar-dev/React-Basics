@@ -199,7 +199,8 @@ function ReducerCounter() {
   );
 }
 
-// useMemo example
+
+
 function MemoExample({ number }) {
   const double = useMemo(() => {
     return number * 2;
@@ -212,6 +213,8 @@ function MemoExample({ number }) {
     </div>
   );
 }
+
+
 
 // useLayoutEffect example
 function LayoutEffectExample() {
